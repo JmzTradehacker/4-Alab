@@ -3,7 +3,7 @@ const csvString = "ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,1
 const rows = csvString.split('\n');
 const header = rows[0].split(',');
 const numcol = header.length;
-
+const obArr = [];
 let newArray = [];
 
 for (let i = 0; i < rows.length; i++) {
@@ -11,4 +11,17 @@ for (let i = 0; i < rows.length; i++) {
   newArray.push(col);
 }
 
-console.log(newArray)
+for (let i = 0; i < newArray.length; i++) {
+  const row = newArray[i];
+  const object = {};
+
+  for (let j = 0; j < numcol; j++) {
+    const key = header[j].toLowerCase();
+    const value = row[j];
+    object[key] = value;
+  }
+
+  obArr.push(object);
+}
+
+console.log(obArr)
