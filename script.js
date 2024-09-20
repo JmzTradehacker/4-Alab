@@ -12,6 +12,8 @@ for (let i = 1; i < rows.length; i++) {
   newArray.push(col);
 }
 
+// **Part 3: Transforming Data into an Array of Objects**
+
 for (let i = 0; i < newArray.length; i++) {
   const row = newArray[i];
   const object = {};
@@ -25,6 +27,7 @@ for (let i = 0; i < newArray.length; i++) {
   obArr.push(object);
 }
 
+// **Part 4: Sorting and Manipulating Data*
 obArr.pop();
 obArr.splice(1, 0, { id: "48", name: "Barry", occupation: "Runner", age: "25" });
 obArr.push({ id: "7", name: "Bilbo", occupation: "None", age: "111" });
@@ -38,3 +41,14 @@ const aveAge = totalAge / obArr.length;
 
 console.log("Total Age:", totalAge);
 console.log("Average Age:", aveAge);
+
+// **Part 5: Transforming Data Back into CSV Format**
+const headers = Object.keys(obArr[0]);
+let csvStringr = headers.join(',');
+
+for (let i = 0; i < obArr.length; i++) {
+  const values = Object.values(obArr[i]);
+  csvStringr += '\n' + values.join(',');
+}
+
+console.log(csvStringr);
